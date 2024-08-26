@@ -1,13 +1,16 @@
 import Button from '../Button/Button';
 import styles from './Options.module.css'
 
-const Options = ({options, handleClick}) => { 
+const Options = ({options, handleClick, handleReset, totalFeedback}) => { 
 
     const titles = Object.keys(options);
 
     return (
        
-        <div> {titles.map(item => <Button onClick={() => {handleClick(item)}} key={item} text={item}/>)}</div>        
+        <div className={styles.container}>
+            {titles.map(item => <Button onClick={() => { handleClick(item) }} key={item} text={item} />)}  
+            {!!totalFeedback && <Button text="Reset" onClick={handleReset} />}
+        </div>        
         
     );
 }
